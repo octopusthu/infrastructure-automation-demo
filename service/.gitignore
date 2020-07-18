@@ -1,0 +1,6 @@
+
+# maven
+/target
+
+# spring boot
+**/resources/application-*.properties
