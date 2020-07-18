@@ -10,6 +10,9 @@
 
 ### Installation
 
-## References
+- Install
+- add user `jenkins` to group `docker`
 
-- [Official Jenkins Docker image README](https://github.com/jenkinsci/docker/blob/master/README.md)
+### Configuration
+
+## References
