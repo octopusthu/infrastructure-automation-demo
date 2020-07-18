@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>Infrastructure Automation Demo</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Infrastructure Automation Demo</h1>
+    </header>
+    <p>Message from server: </p>
+    <p>
+        <script>
+            fetch('api/demo/')
+                .then(response => response.json())
+                .then(data => document.write(data));
+        </script>
+    </p>
+    <footer><img src="footer.jpg"></footer>
+</body>
+
+</html>
