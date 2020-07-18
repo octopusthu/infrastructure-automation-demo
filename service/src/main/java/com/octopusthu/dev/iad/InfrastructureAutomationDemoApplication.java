@@ -2,6 +2,7 @@ package com.octopusthu.dev.iad;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
  * Infrastructure Automation Demo Application
@@ -9,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author octopusthu@gmail.com
  */
 @SpringBootApplication
-public class InfrastructureAutomationDemoApplication {
+public class InfrastructureAutomationDemoApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(InfrastructureAutomationDemoApplication.class, args);
