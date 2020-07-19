@@ -10,13 +10,12 @@
         <h1>Infrastructure Automation Demo</h1>
     </header>
     <p>Message from server: </p>
-    <p>
-        <script>
-            fetch('api/demo/')
-                .then(response => response.json())
-                .then(data => document.write(data));
-        </script>
-    </p>
+    <p id="data"></p>
+    <script>
+        fetch('api/demo/')
+            .then(response => response.text()
+                .then(text => document.getElementById("data").innerHTML = text));
+    </script>
     <footer><img src="footer.jpg"></footer>
 </body>
 

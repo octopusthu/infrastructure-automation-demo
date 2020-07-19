@@ -2,19 +2,12 @@ version: "3"
 services:
     service:
         build: ./service
-        ports:
-            - "18090:8080"
-        restart: always
         container_name: infrastructure-automation-demo-service
     static:
         build: ./static
-        ports:
-            - "18091:80"
-        restart: always
         container_name: infrastructure-automation-demo-static
     reverse-proxy:
         build: ./reverse-proxy
         ports:
-            - "18092:80"
-        restart: always
+            - "18092:18092"
         container_name: infrastructure-automation-demo-reverse-proxy
