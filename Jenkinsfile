@@ -2,6 +2,10 @@ pipeline {
     agent any
     options {
         skipStagesAfterUnstable()
+        parallelsAlwaysFailFast()
+    }
+    environment {
+        DOCKER_HUB_TOKEN = credentials('docker-hub-token')
     }
     stages {
         stage('Build') {
@@ -15,15 +19,33 @@ pipeline {
                 sh 'echo Tests passed!'
             }
         }
-        stage('Push to Docker Registry') {
-            environment {
-                DOCKER_HUB_TOKEN = credentials('docker-hub-token')
-            }
+        stage('Pre Push to Docker Registry') {
             steps {
                 sh 'docker login --username=octopusthu --password=$DOCKER_HUB_TOKEN'
-                sh 'docker push octopusthu/infrastructure-automation-demo-service'
-                sh 'docker push octopusthu/infrastructure-automation-demo-static'
-                sh 'docker push octopusthu/infrastructure-automation-demo-reverse-proxy'
+            }
+        }
+        stage('Push to Docker Registry') {
+            parallel {
+                stage('Push to Docker Registry - service') {
+                    steps {
+                        sh 'docker push octopusthu/infrastructure-automation-demo-service'
+                    }
+                }
+                stage('Push to Docker Registry - static') {
+                    steps {
+                        sh 'docker push octopusthu/infrastructure-automation-demo-static'
+                    }
+                }
+                stage('Push to Docker Registry - reverse-proxy') {
+                    steps {
+                        sh 'docker push octopusthu/infrastructure-automation-demo-reverse-proxy'
+                    }
+                }
+            }
+        }
+        stage('Post Push to Docker Registry') {
+            steps {
+                sh 'docker logout'
             }
         }
         stage('Deliver') {
