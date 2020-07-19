@@ -2,12 +2,15 @@ version: "3"
 services:
     service:
         build: ./service
+        image: octopusthu/infrastructure-automation-demo-service
         container_name: infrastructure-automation-demo-service
     static:
         build: ./static
+        image: octopusthu/infrastructure-automation-demo-static
         container_name: infrastructure-automation-demo-static
     reverse-proxy:
         build: ./reverse-proxy
+        image: octopusthu/infrastructure-automation-demo-reverse-proxy
         ports:
             - "18092:18092"
         container_name: infrastructure-automation-demo-reverse-proxy

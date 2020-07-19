@@ -12,7 +12,7 @@ import java.util.UUID;
 public class InfrastructureAutomationDemoRestController {
     @GetMapping("/api/demo")
     public String hello() {
-        return "Hello, world! Let's generate a new UUID: " + UUID.randomUUID() + "\n Ver: 07/18/2020 @ 3:25pm (UTC)";
+        return "Hello, world! Let's generate a new UUID: " + UUID.randomUUID() + "\n Ver: 07/19/2020 @ 6:33am (UTC)";
     }
 
 }
