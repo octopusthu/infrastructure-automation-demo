@@ -12,6 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 // dummy step
+                sh 'echo Tests passed!'
             }
         }
         stage('Push to Docker Registry') {
@@ -26,6 +27,9 @@ pipeline {
             }
         }
         stage('Deliver') {
+            steps {
+                sh 'echo Delivered!'
+            }
         }
     }
 }
