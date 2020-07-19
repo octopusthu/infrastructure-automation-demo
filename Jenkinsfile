@@ -54,7 +54,7 @@ pipeline {
                 stage('Deliver - test') {
                     steps {
                         script{
-                            if (fileExists 'deliver-to-test') {
+                            if (fileExists('deliver-to-test')) {
                                 sh 'echo Delivered to test environment!'
                             } else {
                                 echo 'Not meant for test environment!'
@@ -65,7 +65,7 @@ pipeline {
                 stage('Deliver - staging') {
                     steps {
                         script{
-                            if (fileExists 'deliver-to-staging') {
+                            if (fileExists('deliver-to-staging')) {
                                 sh 'echo Delivered to staging environment!'
                             } else {
                                 echo 'Not meant for staging environment!'
@@ -76,7 +76,7 @@ pipeline {
                 stage('Deliver - prod') {
                     steps {
                         script{
-                            if (fileExists 'deliver-to-prod') {
+                            if (fileExists('deliver-to-prod')) {
                                 sh 'echo Delivered to prod environment!'
                             } else {
                                 echo 'Not meant for prod environment!'
