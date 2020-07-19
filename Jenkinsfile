@@ -61,9 +61,10 @@ pipeline {
                     steps {
                         script{
                             if (fileExists('deliver-to-test')) {
-                                sh 'scp -i $SSH_CREDS_TEST -P $SSH_PORT_TEST docker-compose.server.yml $SSH_CREDS_TEST_USR@$SSH_HOST_TEST:$SSH_PATH_TEST'
-                                sh 'ssh $SSH_CREDS_TEST_USR@$SSH_HOST_TEST -p $SSH_PORT_TEST -i $SSH_CREDS_TEST'
+                                // sh 'scp -i $SSH_CREDS_TEST -P $SSH_PORT_TEST docker-compose.server.yml $SSH_CREDS_TEST_USR@$SSH_HOST_TEST:$SSH_PATH_TEST'
+                                // sh 'ssh $SSH_CREDS_TEST_USR@$SSH_HOST_TEST -p $SSH_PORT_TEST -i $SSH_CREDS_TEST'
                                 sh 'cd $SSH_PATH_TEST'
+                                sh 'cp docker-compose.server.yml $SSH_PATH_TEST'
                                 sh 'docker-compose -f docker-compose.server.yml down'
                                 sh 'docker-compose -f docker-compose.server.yml up -d'
                                 sh 'echo Delivered to test environment!'
