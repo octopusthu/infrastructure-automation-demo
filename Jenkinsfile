@@ -2,7 +2,6 @@ pipeline {
     agent any
     options {
         skipStagesAfterUnstable()
-        parallelsAlwaysFailFast()
     }
     environment {
         DOCKER_HUB_TOKEN = credentials('docker-hub-token')
@@ -25,6 +24,7 @@ pipeline {
             }
         }
         stage('Push to Docker Registry') {
+            failFast true
             parallel {
                 stage('Push to Docker Registry - service') {
                     steps {
